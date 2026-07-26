@@ -1,5 +1,6 @@
 import cors from 'cors'
 import express from 'express'
+import { router } from './routes/analizerRoutes'
 
 process.loadEnvFile()
 
@@ -9,7 +10,7 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 
-// Routes
+app.use('/api', router)
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`)
