@@ -1,5 +1,7 @@
 import cors from 'cors'
 import express from 'express'
+
+import { errorHandler } from './middelewares/errorHandler'
 import { router } from './routes/analizerRoutes'
 
 process.loadEnvFile()
@@ -11,6 +13,8 @@ app.use(express.json())
 app.use(cors())
 
 app.use('/api', router)
+
+app.use(errorHandler)
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`)
